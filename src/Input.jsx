@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import Output from "./Output";
-import Out from "./Out";
+import Output from "./Output";
 
 function Input() {
   const [peopel, setpeopel] = useState([]);
@@ -18,12 +17,9 @@ function Input() {
   };
 
   const cal = () => {
-    // const finalTip = parseInt(percentage/100)*state.amount;
     const finalTip = parseInt(state.amount * state.percentage) / 100;
 
-    //getTipamount(state.type)
-    ///setState({...state,finalTip:finalTip})
-    state.finalTip = finalTip; // mutably --->
+    state.finalTip = finalTip;
     setTotalSum(sum + finalTip);
 
     setpeopel([...peopel, state]);
@@ -31,76 +27,54 @@ function Input() {
 
   return (
     <div className="container">
-      <input
-        type="text"
-        placeholder="bill"
-        name="amount"
-        onChange={handleChange}
-      />
+       <hr />
+            {/* <!-- input --> */}
+            <label htmlFor="bill">Enter your amount:</label>
+            <br />
+
+            <input
+              type="text"
+              placeholder="Enter amount in Number"
+              className="form-control-plaintex"
+              htmlFor="bill"
+              onChange={handleChange}
+              name="amount"
+               
+            />
       <br />
-      <input
-        type="text"
-        placeholder="name"
-        name="name"
-        onChange={handleChange}
-      />
+        {/* <!-- input --> */}
+        <label htmlFor="num">Enter Name of person </label>
+            <br />
+            <input
+              type="text"
+              placeholder="Enter Name of person"
+              className="form-control-plaintex"
+              htmlFor="num"
+              onChange={handleChange}
+               
+              name="name"
+            />
+ 
       <br />
-      <select name="percentage" onChange={handleChange}>
-        <option value={20}>20%</option>
-        <option value={10}>10%</option>
-        <option value={5}>5%</option>
-      </select>
+      <select
+              className="form-control-plaintex"
+              htmlFor="select"
+              name="percentage" onChange={handleChange}
+            >
+              <option value="0" selected>
+                Open for select Option
+              </option>
+              <option value="20">20%</option>
+              <option value="10">10%</option>
+              <option value="5">5%</option>
+            </select>
+
+      
       <br />
       <button onClick={cal}>Add People</button>
-
-      {/* <Output  data={peopel}/>
-      {peopel.map((ele, ind) => {
-          return < Out 
-                 key={ind}
-                 value={ele}
-
-           />
-          
-      })} */}
-
-
-
-
-
-      {console.log(peopel + "people")}
-
-      {/* {
-    peopel.map((ele,ind)=>{
-       
-      return <div>
-            
-        <h1>
-              {ele.name}
-          </h1>
-          <h1>
-              {ele.amount}
-          </h1>
-        
-          <h1>
-              {ele.finalTip}
-          </h1>
-        
-          <h2>
-              {ind+1}
-          </h2>
-
-          <h1>
-              {parseInt(ele.finalTip)+ parseInt(ele.finalTip)}
-          </h1>
-        
-        
-        
-        </div>
-        
-    })
-      
-    
-} */}
+      <hr /> 
+      <Output data={peopel} /> *{console.log(peopel + "people")}
+       <hr  />
     </div>
   );
 }
