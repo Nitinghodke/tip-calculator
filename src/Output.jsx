@@ -3,6 +3,10 @@ import React from "react";
 function Output(props) {
   let data = props.data;
   let sum=0;
+  let newnum=data.map((ele) => {
+    sum +=parseInt(ele.finalTip);
+    return sum;
+  })
   console.log(data);
   return (
     <>
@@ -28,10 +32,7 @@ function Output(props) {
             <tr>
               <td>{data.length}</td>
               <td>
-                {data.map((ele) => {
-                  sum += parseInt(ele.finalTip);
-                  return sum;
-                })}
+                {newnum[newnum.length-1]}
               </td>
             </tr>
           </tbody>

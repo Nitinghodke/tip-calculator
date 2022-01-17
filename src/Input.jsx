@@ -23,6 +23,14 @@ function Input() {
     setTotalSum(sum + finalTip);
 
     setpeopel([...peopel, state]);
+
+    setState({
+    name: "",
+    amount: "",
+    type: "",
+    finalTip: "",
+    percentage: "",
+  })
   };
 
   return (
@@ -33,12 +41,14 @@ function Input() {
             <br />
 
             <input
-              type="text"
+              type="number"
               placeholder="Enter amount in Number"
               className="form-control-plaintex"
               htmlFor="bill"
-              onChange={handleChange}
+              value={state.amount}
+              required onChange={handleChange}
               name="amount"
+            
                
             />
       <br />
@@ -50,16 +60,20 @@ function Input() {
               placeholder="Enter Name of person"
               className="form-control-plaintex"
               htmlFor="num"
-              onChange={handleChange}
-               
+              required onChange={handleChange}
+               value={state.name}
               name="name"
+            
             />
  
       <br />
       <select
               className="form-control-plaintex"
               htmlFor="select"
-              name="percentage" onChange={handleChange}
+              name="percentage"
+              required onChange={handleChange}
+              value={state.percentage}
+             
             >
               <option value="0" selected>
                 Open for select Option
